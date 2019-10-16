@@ -1,5 +1,5 @@
 ;; ------------ 配置org agenda 日程 --------------
-(setq org-agenda-files '("~/orgnotes"))
+(setq org-agenda-files '("~/dailylog/orgnotes"))
 (global-set-key (kbd "C-c a") 'org-agenda)
 
 ;; -------------- 配置org -----------------
@@ -7,7 +7,7 @@
 
 ;; 这边就是为路径赋值
 (defvar org-agenda-dir "" "gtd org files location")
-(setq-default org-agenda-dir "~/orgnotes/")
+(setq-default org-agenda-dir "~/dailylog/orgnotes/")
 (setq org-agenda-file-inbox (expand-file-name "inbox.org" org-agenda-dir))
 (setq org-agenda-file-task (expand-file-name "task.org" org-agenda-dir))
 (setq org-agenda-file-finished (expand-file-name "finished.org" org-agenda-dir))
