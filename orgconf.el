@@ -1,5 +1,5 @@
 ;; ------------ 配置org agenda 日程 --------------
-(setq org-agenda-files '("~/orgnotes"))
+(setq org-agenda-files '("~/dailylog/orgnotes"))
 (global-set-key (kbd "C-c a") 'org-agenda)
 
 ;; -------------- 配置org -----------------
@@ -7,7 +7,7 @@
 
 ;; 定义变量，定义GTD需要的所有文件夹
 (defvar org-agenda-dir "" "gtd org files location")
-(setq-default org-agenda-dir "~/orgnotes/")
+(setq-default org-agenda-dir "~/dailylog/orgnotes/")
 (setq org-agenda-file-inbox (expand-file-name "inbox.org" org-agenda-dir))
 (setq org-agenda-file-task (expand-file-name "task.org" org-agenda-dir))
 (setq org-agenda-file-finished (expand-file-name "finished.org" org-agenda-dir))
@@ -19,14 +19,13 @@
 ;;--------------- capture 任务模板 ----------------
 (setq org-capture-templates
       '(
-        ("1" "Tasks" entry (file+headline org-agenda-file-inbox "Inbox")
+        ("1" "Tasks" entry (file+headline org-agenda-file-inbox "Tasks")
          "* TODO [#B] %?\n  %i\n"
          :empty-lines 1)
-        ("2" "Ideas" entry (file+headline org-agenda-file-inbox "Inbox")
-         "* TODO [#D] %?\n  %i\n"
+        ("2" "Ideas" entry (file+headline org-agenda-file-inbox "Ideas")
+         "* SOMEDAY [#D] %?\n  %i\n"
          :empty-lines 1)
-        )
-      )
+        ))
 
 ;; ------------ 优先级设置颜色 ---------------
 (setq org-highest-priority ?A)
@@ -35,8 +34,8 @@
 (setq org-priority-faces
       '((?A . (:background "red" :foreground "white" :weight bold))
         (?B . (:background "DarkOrange" :foreground "white" :weight bold))
-        (?C . (:background "yellow" :foreground "DarkGreen" :weight bold))
-        (?D . (:background "DodgerBlue" :foreground "black" :weight bold))
+        (?C . (:background "yellow" :foreground "magenta" :weight bold))
+        (?D . (:background "DodgerBlue" :foreground "burlywood" :weight bold))
         ))
 
 ;; ------------- 任务状态 -----------------
@@ -44,6 +43,15 @@
       '((sequence "TODO(1)" "NEXT(2)" "WAITTING(3)" "SOMEDAY(4)" "|" "DONE(5)" "ABORT(6)")
     ))
 
+;; todo关键字，显示样式配置
+(setq org-todo-keyword-faces
+	'(	("TODO" . (:background "red" :foreground "white" :weight bold))
+		("NEXT" . (:background "white" :foreground "red" :weight bold))
+		("WAITTING" . (:foreground "MediumBlue" :weight bold))
+		("SOMEDAY" . (:background "purple" :foreground "gray" :weight bold))
+		("DONE" . (:background "DarkOrange" :foreground "black" :weight bold))
+		("ABORT" . (:background "azure" :foreground "Darkgreen" :weight bold))
+))
 
 ;; ------------- Tag 标签,在所有的org文件中生效 ------------------
 (setq org-tag-alist '(
@@ -73,6 +81,5 @@
 
 ;; 设置bullet list
 (setq org-bullets-bullet-list '("☰" "☷" "☯" "☭"))
-
 
 
