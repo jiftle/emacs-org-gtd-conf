@@ -1,13 +1,23 @@
+;; --------------------------------------
+;; 文件名: orgconf.el
+;; 功能描述: 配置Org-Mode模式
+;; 作者: jiftle
+;; 时间: 2019-12-30
+;; --------------------------------------
+
+;; 定义变量
+(defvar org-agenda-dir "" "gtd org files location")
+
+;; ----------- 配置Org-Mode的存储目录 --------------
+(setq org-agenda-files '("~/note/orgnotes"))
+(setq-default org-agenda-dir "~/note/orgnotes/")
+
 ;; ------------ 配置org agenda 日程 --------------
-(setq org-agenda-files '("~/dailylog/orgnotes"))
 (global-set-key (kbd "C-c a") 'org-agenda)
 
 ;; -------------- 配置org -----------------
 (global-set-key (kbd "C-c c") 'org-capture)
 
-;; 这边就是为路径赋值
-(defvar org-agenda-dir "" "gtd org files location")
-(setq-default org-agenda-dir "~/dailylog/orgnotes/")
 (setq org-agenda-file-inbox (expand-file-name "inbox.org" org-agenda-dir))
 (setq org-agenda-file-task (expand-file-name "task.org" org-agenda-dir))
 (setq org-agenda-file-finished (expand-file-name "finished.org" org-agenda-dir))
