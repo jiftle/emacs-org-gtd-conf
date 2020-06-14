@@ -71,6 +71,19 @@
                       ("项目" . ?4)
                       )) 
 
+;; --------------- 定义转接文件 --------------
+;; 绑定快捷键
+(define-key global-map "\C-cr" 'org-refile)
+
+
+;; 转接文件
+(setq org-refile-targets  '(
+    (org-agenda-file-task :maxlevel . 1)
+    (org-agenda-file-finished :maxlevel . 1)
+    (org-agenda-file-note :maxlevel . 1)
+    (org-agenda-file-trash :maxlevel . 1)
+    (org-agenda-file-project :maxlevel . 1)
+))
 
 ;; --------------- 显示样式 --------------
 ;; 打开org-indent mode
@@ -79,19 +92,4 @@
 ;; 设置bullet list
 (setq org-bullets-bullet-list '("☰" "☷" "☯" "☭"))
 
-
-
-;; --------------- 定义转接文件 --------------
-;; 绑定快捷键
-(define-key global-map "\C-cr" 'org-refile)
-
-
-;; 添加finished和canceled两个文件路径，并且只转移到一级标题
-(setq org-refile-targets  '(
-    (org-agenda-file-task :maxlevel . 1)
-    (org-agenda-file-finished :maxlevel . 1)
-    (org-agenda-file-note :maxlevel . 1)
-    (org-agenda-file-trash :maxlevel . 1)
-    (org-agenda-file-project :maxlevel . 1)
-))
 
